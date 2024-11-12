@@ -1,7 +1,7 @@
 {
 	"name": "open-remote-wsl",
-	"displayName": "Open Remote - WSL for postitron",
-	"description": "Open any folder in the Windows Subsystem for Linux (WSL) for postitron.",
+	"displayName": "Open Remote - WSL for Postitron",
+	"description": "Open any folder in the Windows Subsystem for Linux (WSL) for Postitron.",
 	"version": "0.0.5",
 	"publisher": "kv9898",
 	"originalAuthor": "jeanp413",

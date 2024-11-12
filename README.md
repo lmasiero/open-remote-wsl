@@ -1,4 +1,6 @@
-# Open Remote - WSL
+# Open Remote - WSL for Positron
+
+This is a fork of [Open Remote - WSL](https://github.com/jeanp413/open-remote-wsl) adapted for [Positron](https://github.com/posit-dev/positron) only.
 
 ![Open Remote WSL](https://raw.githubusercontent.com/jeanp413/open-remote-wsl/master/docs/images/open-remote-wsl.gif)
 
