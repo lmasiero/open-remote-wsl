@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import * as positron from 'positron';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -24,9 +25,10 @@ export interface IServerConfig {
 
 export async function getVSCodeServerConfig(): Promise<IServerConfig> {
     const productJson = await getVSCodeProductJson();
-
+    const version = `${positron.version}-${positron.buildNumber}`;
+    
     return {
-        version: vscode.version.replace('-insider',''),
+        version, //: vscode.version.replace('-insider',''),
         commit: productJson.commit,
         quality: productJson.quality,
         release: productJson.release,
