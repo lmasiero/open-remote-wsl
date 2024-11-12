@@ -2,7 +2,7 @@
 
 This is a fork of [Open Remote - WSL](https://github.com/jeanp413/open-remote-wsl) adapted for [Positron](https://github.com/posit-dev/positron) only.
 
-![Open Remote WSL](https://raw.githubusercontent.com/jeanp413/open-remote-wsl/master/docs/images/open-remote-wsl.gif)
+![Open Remote WSL](https://github.com/user-attachments/assets/30dbc136-3ca2-451f-9a3d-58d7c68b5fe6)
 
 
 **Supported**:
