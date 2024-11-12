@@ -1,15 +1,16 @@
 {
 	"name": "open-remote-wsl",
-	"displayName": "Open Remote - WSL",
-	"description": "Open any folder in the Windows Subsystem for Linux (WSL).",
-	"version": "0.0.4",
-	"publisher": "jeanp413",
+	"displayName": "Open Remote - WSL for postitron",
+	"description": "Open any folder in the Windows Subsystem for Linux (WSL) for postitron.",
+	"version": "0.0.5",
+	"publisher": "kv9898",
+	"originalAuthor": "jeanp413",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/jeanp413/open-remote-wsl.git"
+		"url": "https://github.com/kv9898/open-remote-wsl.git"
 	},
 	"bugs": {
-		"url": "https://github.com/jeanp413/open-remote-wsl/issues"
+		"url": "https://github.com/kv9898/open-remote-wsl/issues"
 	},
 	"icon": "resources/icon.png",
 	"engines": {
