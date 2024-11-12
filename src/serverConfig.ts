@@ -28,7 +28,8 @@ export async function getVSCodeServerConfig(): Promise<IServerConfig> {
     const version = `${positron.version}-${positron.buildNumber}`;
     
     return {
-        version, //: vscode.version.replace('-insider',''),
+        version, 
+        // version: vscode.version.replace('-insider',''),
         commit: productJson.commit,
         quality: productJson.quality,
         release: productJson.release,
