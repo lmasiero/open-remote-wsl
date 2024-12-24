@@ -1,3 +1,7 @@
+## 0.0.6
+
+- Fix typos
+
 ## 0.0.5
 
 - Add support for Positron
