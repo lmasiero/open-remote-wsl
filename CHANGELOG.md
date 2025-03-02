@@ -1,3 +1,9 @@
+## 0.0.7
+
+- Update default download URL template
+
+- Update README
+
 ## 0.0.6
 
 - Fix typos
