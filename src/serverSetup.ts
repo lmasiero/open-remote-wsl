@@ -193,12 +193,15 @@ ARCH="$(uname -m)"
 case $ARCH in
     x86_64 | amd64)
         SERVER_ARCH="x64"
+        ARCH_LONG="x86_64"
         ;;
     armv7l | armv8l)
         SERVER_ARCH="armhf"
+        ARCH_LONG="armhf"
         ;;
     arm64 | aarch64)
         SERVER_ARCH="arm64"
+        ARCH_LONG="arm64"
         ;;
     *)
         echo "Error architecture not supported: $ARCH"
@@ -224,7 +227,7 @@ if [[ ! -d $SERVER_DIR ]]; then
     fi
 fi
 
-SERVER_DOWNLOAD_URL="$(echo "${serverDownloadUrlTemplate.replace(/\$\{/g, '\\${')}" | sed "s/\\\${quality}/$DISTRO_QUALITY/g" | sed "s/\\\${version}/$DISTRO_VERSION/g" | sed "s/\\\${commit}/$DISTRO_COMMIT/g" | sed "s/\\\${os}/$SERVER_OS/g" | sed "s/\\\${arch}/$SERVER_ARCH/g" | sed "s/\\\${release}/$DISTRO_VSCODIUM_RELEASE/g")"
+SERVER_DOWNLOAD_URL="$(echo "${serverDownloadUrlTemplate.replace(/\$\{/g, '\\${')}" | sed "s/\\\${quality}/$DISTRO_QUALITY/g" | sed "s/\\\${version}/$DISTRO_VERSION/g" | sed "s/\\\${commit}/$DISTRO_COMMIT/g" | sed "s/\\\${os}/$SERVER_OS/g" | sed "s/\\\${arch}/$SERVER_ARCH/g" | sed "s/\\\${arch-long}/$ARCH_LONG/g" | sed "s/\\\${release}/$DISTRO_VSCODIUM_RELEASE/g")"
 
 # Check if server script is already installed
 if [[ ! -f $SERVER_SCRIPT ]]; then
@@ -311,7 +314,7 @@ if [[ -f $SERVER_LOGFILE ]]; then
     done
 
     if [[ -z $LISTENING_ON ]]; then
-        echo "Error server did not start sucessfully"
+        echo "Error server did not start successfully"
         print_install_results_and_exit 1
     fi
 else
