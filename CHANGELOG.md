@@ -1,3 +1,7 @@
+## 0.0.8
+
+- Allow "positron" command from WSL to activate the Positron WSL connection automatically.
+
 ## 0.0.7
 
 - Update default download URL template
