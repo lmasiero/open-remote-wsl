@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import Log from './common/logger';
 import { RemoteWSLResolver, REMOTE_WSL_AUTHORITY } from './authResolver';
-import { promptOpenRemoteWSLWindow } from './commands';
+import { promptOpenRemoteWSLWindow, setEnvVariable, unsetEnvVariable, promptSetEnvVariable } from './commands';
 import { DistroTreeDataProvider } from './distroTreeView';
 import { getRemoteWorkspaceLocationData, RemoteLocationHistory } from './remoteLocationHistory';
 import { WSLManager } from './wsl/wslManager';
@@ -35,6 +35,25 @@ export async function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(vscode.commands.registerCommand('openremotewsl.connectUsingDistro', () => promptOpenRemoteWSLWindow(wslManager, false, true)));
     context.subscriptions.push(vscode.commands.registerCommand('openremotewsl.connectUsingDistroInNewWindow', () => promptOpenRemoteWSLWindow(wslManager, false, false)));
     context.subscriptions.push(vscode.commands.registerCommand('openremotewsl.showLog', () => logger.show()));
+
+    // Register environment variable commands
+    context.subscriptions.push(
+        vscode.commands.registerCommand('openremotewsl.setPositronEnv', () => {
+            setEnvVariable(true);
+        }),
+        vscode.commands.registerCommand('openremotewsl.unsetPositronEnv', () => {
+            unsetEnvVariable(true);
+        })
+    );
+
+    // Manage add to environment prompt
+    promptSetEnvVariable(context);
+    context.subscriptions.push(
+        vscode.commands.registerCommand('openremotewsl.resetPromptState', () => {
+            context.globalState.update('positronWslPrompted', false);
+            vscode.window.showInformationMessage('Prompt state has been reset. You will be prompted again next activation.');
+        })
+    );
 }
 
 export function deactivate() {

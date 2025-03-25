@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { exec } from 'child_process';
 import { getRemoteAuthority } from './authResolver';
 import { WSLDistro, WSLManager, WSLOnlineDistro } from './wsl/wslManager';
 import wslTerminal from './wsl/wslTerminal';
@@ -81,4 +82,46 @@ export async function deleteWSLDistro(wslManager: WSLManager, distroName: string
         return true;
     }
     return false;
+}
+
+export function setEnvVariable(showMessage = false) {
+    const thisExtension: string = 'kv9898.open-remote-wsl';
+    const psCommand = `[System.Environment]::SetEnvironmentVariable('POSITRON_WSL_EXTENSION_NAME', '${thisExtension}', 'User')`;
+  
+    exec(`powershell.exe -Command "${psCommand}"`, (err) => {
+      if (err) {
+        vscode.window.showErrorMessage('Failed to set POSITRON_WSL_EXTENSION_NAME.');
+      } else if (showMessage) {
+        vscode.window.showInformationMessage(`POSITRON_WSL_EXTENSION_NAME has been set to "${thisExtension}".`);
+      }
+    });
+  }
+
+export function unsetEnvVariable(showMessage = false) {
+    const psCommand = `[System.Environment]::SetEnvironmentVariable('POSITRON_WSL_EXTENSION_NAME', $null, 'User')`;
+
+    exec(`powershell.exe -Command "${psCommand}"`, (err) => {
+        if (err) {
+        vscode.window.showErrorMessage('Failed to remove POSITRON_WSL_EXTENSION_NAME from the environment.');
+        } else if (showMessage) {
+        vscode.window.showInformationMessage('POSITRON_WSL_EXTENSION_NAME has been removed from the environment.');
+        }
+    });
+}
+
+export function promptSetEnvVariable(context: vscode.ExtensionContext) {
+    const alreadyPrompted = context.globalState.get<boolean>('positronWslPrompted');
+    if (!alreadyPrompted) {
+        vscode.window.showInformationMessage(
+        `Do you want to set the environment variable POSITRON_WSL_EXTENSION_NAME to "kv9898.open-remote-wsl"?`,
+        'Yes',
+        'No'
+        ).then(choice => {
+        if (choice === 'Yes') {
+            setEnvVariable(true);
+        }
+        // Mark that we have prompted the user, regardless of answer
+        context.globalState.update('positronWslPrompted', true);
+        });
+    }
 }

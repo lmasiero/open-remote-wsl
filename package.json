@@ -36,7 +36,8 @@
     "onCommand:openremotewsl.connectUsingDistroInNewWindow",
     "onCommand:openremotewsl.showLog",
     "onResolveRemoteAuthority:wsl",
-    "onView:wslTargets"
+    "onView:wslTargets",
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -128,6 +129,19 @@
       {
         "command": "openremotewsl.explorer.deleteDistro",
         "title": "Delete Distro"
+      },
+      {
+        "command": "openremotewsl.setPositronEnv",
+        "title": "Register this WSL extension for launching Positron from WSL"
+      },
+      {
+        "command": "openremotewsl.unsetPositronEnv",
+        "title": "Unregister this WSL extension from Positron launcher"
+      },
+      {
+        "command": "openremotewsl.resetPromptState",
+        "title": "Reset Positron WSL prompt state (Dev Only)",
+        "enablement": "isDevelopment"
       }
     ],
     "resourceLabelFormatters": [
