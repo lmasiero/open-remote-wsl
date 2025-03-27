@@ -113,7 +113,7 @@ export function promptSetEnvVariable(context: vscode.ExtensionContext) {
     const alreadyPrompted = context.globalState.get<boolean>('positronWslPrompted');
     if (!alreadyPrompted) {
         vscode.window.showInformationMessage(
-        `Do you want to set the environment variable POSITRON_WSL_EXTENSION_NAME to "kv9898.open-remote-wsl"?`,
+        `Would you like to enable launching Positron from a WSL terminal using the "positron"? (This involves setting the "POSITRON_WSL_EXTENSION_NAME" environment variable, you can revert this at any time. More info is in the README)`,
         'Yes',
         'No'
         ).then(choice => {

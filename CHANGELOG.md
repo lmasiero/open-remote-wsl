@@ -1,6 +1,10 @@
+## 0.0.9
+
+- Add support for registering this extension as an environment variable to enable launching Positron from WSL without manual editing of the Positron launcher script with after merging of PR [#6941](https://github.com/posit-dev/positron/pull/6941).
+
 ## 0.0.8
 
-- Allow "positron" command from WSL to activate the Positron WSL connection automatically.
+- Allow "positron" command from WSL to activate the Positron WSL connection automatically (manual editing of the Positron launcher is required).
 
 ## 0.0.7
 
